@@ -5,7 +5,7 @@
 + pre-install.sh
 + harbor-install.sh
 + docker-install.sh
-+ k8s-install.sh
++ kube-install.sh
 + helm-install.sh
 
 #### 介绍脚本
