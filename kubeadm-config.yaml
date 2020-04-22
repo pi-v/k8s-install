@@ -1,0 +1,26 @@
+# 指定以下即可,其他选项不指定保持默认
+apiServer:
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+# 集群名称
+clusterName: kubernetes
+# 镜像仓库地址
+imageRepository: harbor.opsbible.com/k8s
+# 版本
+kubernetesVersion: v1.18.2
+# 集群ip
+controlPlaneEndpoint: "10.0.0.29:6444"
+# 网络网段设置,pod网段和service网段
+networking:
+  dnsDomain: cluster.local
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: 10.96.0.0/12
+scheduler: {}
+
+---
+# 开启ipvs模式
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+featureGates:
+  SupportIPVSProxyMode: true
+mode: ipvs
